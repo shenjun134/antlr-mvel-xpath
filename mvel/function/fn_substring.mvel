@@ -1,0 +1,18 @@
+/**
+* original function is fn:substring(string,start,len)
+* has been override 2
+**/
+def fn_substring(str,start,len){
+ if(str == null){
+   return null;
+ }
+ if(start < 1){
+   return null;
+ }
+ int beginIndex = start - 1;
+ int endIndex = beginIndex + len;
+ if(len > str.length){
+   endIndex = str.length;
+ }
+ return str.substring(beginIndex, endIndex);
+}

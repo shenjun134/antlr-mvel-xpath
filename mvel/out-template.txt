@@ -1,0 +1,15 @@
+/**
+function def begin
+https://www.w3school.com.cn/xpath/xpath_functions.asp
+**/
+
+//xpath function declare
+%s
+
+
+//common function declare
+%s
+
+
+//test function
+%s

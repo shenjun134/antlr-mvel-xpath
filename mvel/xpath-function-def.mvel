@@ -1,0 +1,832 @@
+/**
+function def begin
+https://www.w3school.com.cn/xpath/xpath_functions.asp
+**/
+
+//xpath function declare
+//################################################### Access function function begin
+/**
+* original function is fn:node-name(node)
+* 
+**/
+def fn_node_name(node){
+  //TODO 
+  notImpl('fn_node_name', [node]);
+}
+/**
+* original function is fn:nilled(node)
+* 
+**/
+def fn_nilled(node){
+  //TODO 
+  notImpl('fn_nilled', [node]);
+}
+/**
+* original function is fn:data(item.item,...)
+* 
+**/
+def fn_data(item_item){
+  //TODO the last param is ...
+  notImpl('fn_data', [item_item]);
+}
+/**
+* original function is fn:base-uri(node)
+* has been override 2
+**/
+def fn_base_uri(node){
+  //TODO 
+  notImpl('fn_base_uri', [node]);
+}
+/**
+* original function is fn:document-uri(node)
+* 
+**/
+def fn_document_uri(node){
+  //TODO 
+  notImpl('fn_document_uri', [node]);
+}
+//################################################### Access function function begin
+/****************************** I am a split ********************************/
+//################################################### Error and trace functions function begin
+/**
+* original function is fn:error(error,description,error-object)
+* has been override 4
+**/
+def fn_error(error,description,error_object){
+  //TODO 
+  notImpl('fn_error', [error,description,error_object]);
+}
+/**
+* original function is fn:trace(value,label)
+* 
+**/
+def fn_trace(value,label){
+  //TODO 
+  notImpl('fn_trace', [value,label]);
+}
+//################################################### Error and trace functions function begin
+/****************************** I am a split ********************************/
+//################################################### Functions related to numerical values function begin
+/**
+* original function is fn:number(arg)
+* 
+**/
+def fn_number(arg){
+  //TODO 
+  notImpl('fn_number', [arg]);
+}
+/**
+* original function is fn:abs(num)
+* 
+**/
+def fn_abs(num){
+  //TODO 
+  notImpl('fn_abs', [num]);
+}
+/**
+* original function is fn:ceiling(num)
+* 
+**/
+def fn_ceiling(num){
+  //TODO 
+  notImpl('fn_ceiling', [num]);
+}
+/**
+* original function is fn:floor(num)
+* 
+**/
+def fn_floor(num){
+  //TODO 
+  notImpl('fn_floor', [num]);
+}
+/**
+* original function is fn:round(num)
+* 
+**/
+def fn_round(num){
+  //TODO 
+  notImpl('fn_round', [num]);
+}
+/**
+* original function is fn:round-half-to-even()
+* 
+**/
+def fn_round_half_to_even(){
+  //TODO 
+  notImpl('fn_round_half_to_even', []);
+}
+//################################################### Functions related to numerical values function begin
+/****************************** I am a split ********************************/
+//################################################### Functions on Strings function begin
+/**
+* original function is fn:string(arg)
+* 
+**/
+def fn_string(arg){
+  //TODO 
+  notImpl('fn_string', [arg]);
+}
+/**
+* original function is fn:codepoints-to-string(int,int,...)
+* 
+**/
+def fn_codepoints_to_string(numInt,numInt11){
+  //TODO the last param is ...
+  notImpl('fn_codepoints_to_string', [numInt,numInt11]);
+}
+/**
+* original function is fn:string-to-codepoints(string)
+* 
+**/
+def fn_string_to_codepoints(str){
+  //TODO 
+  notImpl('fn_string_to_codepoints', [str]);
+}
+/**
+* original function is fn:codepoint-equal(comp1,comp2)
+* 
+**/
+def fn_codepoint_equal(comp1,comp2){
+  //TODO 
+  notImpl('fn_codepoint_equal', [comp1,comp2]);
+}
+/**
+* original function is fn:compare(comp1,comp2,collation)
+* has been override 2
+**/
+def fn_compare(comp1,comp2,collation){
+  //TODO 
+  notImpl('fn_compare', [comp1,comp2,collation]);
+}
+/**
+* original function is fn:concat(string,string,...)
+* 
+**/
+def fn_concat(str,str11){
+  //TODO the last param is ...
+  notImpl('fn_concat', [str,str11]);
+}
+/**
+* original function is fn:string-join((string,string,...),sep)
+* 
+**/
+def fn_string_join(stringArray,sep){
+  //TODO the last param is ...
+  notImpl('fn_string_join', [stringArray,sep]);
+}
+/**
+* original function is fn:substring(string,start,len)
+* has been override 2
+**/
+def fn_substring(str,start,len){
+ if(str == null){
+   return null;
+ }
+ if(start < 1){
+   return null;
+ }
+ int beginIndex = start - 1;
+ int endIndex = beginIndex + len;
+ if(len > str.length){
+   endIndex = str.length;
+ }
+ return str.substring(beginIndex, endIndex);
+}/**
+* original function is fn:string-length(string)
+* has been override 2
+**/
+def fn_string_length(str){
+  //TODO 
+  notImpl('fn_string_length', [str]);
+}
+/**
+* original function is fn:normalize-space(string)
+* has been override 2
+**/
+def fn_normalize_space(str){
+  //TODO 
+  notImpl('fn_normalize_space', [str]);
+}
+/**
+* original function is fn:normalize-unicode()
+* 
+**/
+def fn_normalize_unicode(){
+  //TODO 
+  notImpl('fn_normalize_unicode', []);
+}
+/**
+* original function is fn:upper-case(string)
+* 
+**/
+def fn_upper_case(str){
+  //TODO 
+  notImpl('fn_upper_case', [str]);
+}
+/**
+* original function is fn:lower-case(string)
+* 
+**/
+def fn_lower_case(str){
+  //TODO 
+  notImpl('fn_lower_case', [str]);
+}
+/**
+* original function is fn:translate(string1,string2,string3)
+* 
+**/
+def fn_translate(string1,string2,string3){
+  //TODO 
+  notImpl('fn_translate', [string1,string2,string3]);
+}
+/**
+* original function is fn:escape-uri(stringURI,esc-res)
+* 
+**/
+def fn_escape_uri(stringURI,esc_res){
+  //TODO 
+  notImpl('fn_escape_uri', [stringURI,esc_res]);
+}
+/**
+* original function is fn:contains(string1,string2)
+* 
+**/
+def fn_contains(string1,string2){
+  //TODO 
+  notImpl('fn_contains', [string1,string2]);
+}
+/**
+* original function is fn:starts-with(string1,string2)
+* 
+**/
+def fn_starts_with(string1,string2){
+  //TODO 
+  notImpl('fn_starts_with', [string1,string2]);
+}
+/**
+* original function is fn:ends-with(string1,string2)
+* 
+**/
+def fn_ends_with(string1,string2){
+  //TODO 
+  notImpl('fn_ends_with', [string1,string2]);
+}
+/**
+* original function is fn:substring-before(string1,string2)
+* 
+**/
+def fn_substring_before(string1,string2){
+  //TODO 
+  notImpl('fn_substring_before', [string1,string2]);
+}
+/**
+* original function is fn:substring-after(string1,string2)
+* 
+**/
+def fn_substring_after(string1,string2){
+  //TODO 
+  notImpl('fn_substring_after', [string1,string2]);
+}
+/**
+* original function is fn:matches(string,pattern)
+* 
+**/
+def fn_matches(str,pattern){
+  //TODO 
+  notImpl('fn_matches', [str,pattern]);
+}
+/**
+* original function is fn:replace(string,pattern,replace)
+* 
+**/
+def fn_replace(str,pattern,replace){
+  //TODO 
+  notImpl('fn_replace', [str,pattern,replace]);
+}
+/**
+* original function is fn:tokenize(string,pattern)
+* 
+**/
+def fn_tokenize(str,pattern){
+  //TODO 
+  notImpl('fn_tokenize', [str,pattern]);
+}
+//################################################### Functions on Strings function begin
+/****************************** I am a split ********************************/
+//################################################### Functions for anyURI function begin
+/**
+* original function is fn:resolve-uri(relative,base)
+* 
+**/
+def fn_resolve_uri(relative,base){
+  //TODO 
+  notImpl('fn_resolve_uri', [relative,base]);
+}
+//################################################### Functions for anyURI function begin
+/****************************** I am a split ********************************/
+//################################################### Functions on Boolean Values function begin
+/**
+* original function is fn:boolean(arg)
+* 
+**/
+def fn_boolean(arg){
+  //TODO 
+  notImpl('fn_boolean', [arg]);
+}
+/**
+* original function is fn:not(arg)
+* 
+**/
+def fn_not(arg){
+  //TODO 
+  notImpl('fn_not', [arg]);
+}
+/**
+* original function is fn:true()
+* 
+**/
+def fn_true(){
+  //TODO 
+  notImpl('fn_true', []);
+}
+/**
+* original function is fn:false()
+* 
+**/
+def fn_false(){
+  //TODO 
+  notImpl('fn_false', []);
+}
+//################################################### Functions on Boolean Values function begin
+/****************************** I am a split ********************************/
+//################################################### Functions on Duration, Date and Time function begin
+/**
+* original function is fn:dateTime(date,time)
+* 
+**/
+def fn_dateTime(date,time){
+  //TODO 
+  notImpl('fn_dateTime', [date,time]);
+}
+/**
+* original function is fn:years-from-duration(datetimedur)
+* 
+**/
+def fn_years_from_duration(datetimedur){
+  //TODO 
+  notImpl('fn_years_from_duration', [datetimedur]);
+}
+/**
+* original function is fn:months-from-duration(datetimedur)
+* 
+**/
+def fn_months_from_duration(datetimedur){
+  //TODO 
+  notImpl('fn_months_from_duration', [datetimedur]);
+}
+/**
+* original function is fn:days-from-duration(datetimedur)
+* 
+**/
+def fn_days_from_duration(datetimedur){
+  //TODO 
+  notImpl('fn_days_from_duration', [datetimedur]);
+}
+/**
+* original function is fn:hours-from-duration(datetimedur)
+* 
+**/
+def fn_hours_from_duration(datetimedur){
+  //TODO 
+  notImpl('fn_hours_from_duration', [datetimedur]);
+}
+/**
+* original function is fn:minutes-from-duration(datetimedur)
+* 
+**/
+def fn_minutes_from_duration(datetimedur){
+  //TODO 
+  notImpl('fn_minutes_from_duration', [datetimedur]);
+}
+/**
+* original function is fn:seconds-from-duration(datetimedur)
+* 
+**/
+def fn_seconds_from_duration(datetimedur){
+  //TODO 
+  notImpl('fn_seconds_from_duration', [datetimedur]);
+}
+/**
+* original function is fn:year-from-dateTime(datetime)
+* 
+**/
+def fn_year_from_dateTime(datetime){
+  //TODO 
+  notImpl('fn_year_from_dateTime', [datetime]);
+}
+/**
+* original function is fn:month-from-dateTime(datetime)
+* 
+**/
+def fn_month_from_dateTime(datetime){
+  //TODO 
+  notImpl('fn_month_from_dateTime', [datetime]);
+}
+/**
+* original function is fn:day-from-dateTime(datetime)
+* 
+**/
+def fn_day_from_dateTime(datetime){
+  //TODO 
+  notImpl('fn_day_from_dateTime', [datetime]);
+}
+/**
+* original function is fn:hours-from-dateTime(datetime)
+* 
+**/
+def fn_hours_from_dateTime(datetime){
+  //TODO 
+  notImpl('fn_hours_from_dateTime', [datetime]);
+}
+/**
+* original function is fn:minutes-from-dateTime(datetime)
+* 
+**/
+def fn_minutes_from_dateTime(datetime){
+  //TODO 
+  notImpl('fn_minutes_from_dateTime', [datetime]);
+}
+/**
+* original function is fn:seconds-from-dateTime(datetime)
+* 
+**/
+def fn_seconds_from_dateTime(datetime){
+  //TODO 
+  notImpl('fn_seconds_from_dateTime', [datetime]);
+}
+/**
+* original function is fn:timezone-from-dateTime(datetime)
+* 
+**/
+def fn_timezone_from_dateTime(datetime){
+  //TODO 
+  notImpl('fn_timezone_from_dateTime', [datetime]);
+}
+/**
+* original function is fn:year-from-date(date)
+* 
+**/
+def fn_year_from_date(date){
+  //TODO 
+  notImpl('fn_year_from_date', [date]);
+}
+/**
+* original function is fn:month-from-date(date)
+* 
+**/
+def fn_month_from_date(date){
+  //TODO 
+  notImpl('fn_month_from_date', [date]);
+}
+/**
+* original function is fn:day-from-date(date)
+* 
+**/
+def fn_day_from_date(date){
+  //TODO 
+  notImpl('fn_day_from_date', [date]);
+}
+/**
+* original function is fn:timezone-from-date(date)
+* 
+**/
+def fn_timezone_from_date(date){
+  //TODO 
+  notImpl('fn_timezone_from_date', [date]);
+}
+/**
+* original function is fn:hours-from-time(time)
+* 
+**/
+def fn_hours_from_time(time){
+  //TODO 
+  notImpl('fn_hours_from_time', [time]);
+}
+/**
+* original function is fn:minutes-from-time(time)
+* 
+**/
+def fn_minutes_from_time(time){
+  //TODO 
+  notImpl('fn_minutes_from_time', [time]);
+}
+/**
+* original function is fn:seconds-from-time(time)
+* 
+**/
+def fn_seconds_from_time(time){
+  //TODO 
+  notImpl('fn_seconds_from_time', [time]);
+}
+/**
+* original function is fn:timezone-from-time(time)
+* 
+**/
+def fn_timezone_from_time(time){
+  //TODO 
+  notImpl('fn_timezone_from_time', [time]);
+}
+/**
+* original function is fn:adjust-dateTime-to-timezone(datetime,timezone)
+* 
+**/
+def fn_adjust_dateTime_to_timezone(datetime,timezone){
+  //TODO 
+  notImpl('fn_adjust_dateTime_to_timezone', [datetime,timezone]);
+}
+/**
+* original function is fn:adjust-date-to-timezone(date,timezone)
+* 
+**/
+def fn_adjust_date_to_timezone(date,timezone){
+  //TODO 
+  notImpl('fn_adjust_date_to_timezone', [date,timezone]);
+}
+/**
+* original function is fn:adjust-time-to-timezone(time,timezone)
+* 
+**/
+def fn_adjust_time_to_timezone(time,timezone){
+  //TODO 
+  notImpl('fn_adjust_time_to_timezone', [time,timezone]);
+}
+//################################################### Functions on Duration, Date and Time function begin
+/****************************** I am a split ********************************/
+//################################################### Functions Related to QNames function begin
+/**
+* original function is fn:QName()
+* 
+**/
+def fn_QName(){
+  //TODO 
+  notImpl('fn_QName', []);
+}
+/**
+* original function is fn:local-name-from-QName()
+* 
+**/
+def fn_local_name_from_QName(){
+  //TODO 
+  notImpl('fn_local_name_from_QName', []);
+}
+/**
+* original function is fn:namespace-uri-from-QName()
+* 
+**/
+def fn_namespace_uri_from_QName(){
+  //TODO 
+  notImpl('fn_namespace_uri_from_QName', []);
+}
+/**
+* original function is fn:namespace-uri-for-prefix()
+* 
+**/
+def fn_namespace_uri_for_prefix(){
+  //TODO 
+  notImpl('fn_namespace_uri_for_prefix', []);
+}
+/**
+* original function is fn:in-scope-prefixes()
+* 
+**/
+def fn_in_scope_prefixes(){
+  //TODO 
+  notImpl('fn_in_scope_prefixes', []);
+}
+/**
+* original function is fn:resolve-QName()
+* 
+**/
+def fn_resolve_QName(){
+  //TODO 
+  notImpl('fn_resolve_QName', []);
+}
+//################################################### Functions Related to QNames function begin
+/****************************** I am a split ********************************/
+//################################################### On Functions of Nodes function begin
+/**
+* original function is fn:name(nodeset)
+* has been override 2
+**/
+def fn_name(nodeset){
+  //TODO 
+  notImpl('fn_name', [nodeset]);
+}
+/**
+* original function is fn:local-name(nodeset)
+* has been override 2
+**/
+def fn_local_name(nodeset){
+  //TODO 
+  notImpl('fn_local_name', [nodeset]);
+}
+/**
+* original function is fn:namespace-uri(nodeset)
+* has been override 2
+**/
+def fn_namespace_uri(nodeset){
+  //TODO 
+  notImpl('fn_namespace_uri', [nodeset]);
+}
+/**
+* original function is fn:lang(lang)
+* 
+**/
+def fn_lang(lang){
+  //TODO 
+  notImpl('fn_lang', [lang]);
+}
+/**
+* original function is fn:root(node)
+* has been override 2
+**/
+def fn_root(node){
+  //TODO 
+  notImpl('fn_root', [node]);
+}
+//################################################### On Functions of Nodes function begin
+/****************************** I am a split ********************************/
+//################################################### Functions related to sequences function begin
+/**
+* original function is fn:index-of((item,item,...),searchitem)
+* 
+**/
+def fn_index_of(itemArray,searchitem){
+  //TODO the last param is ...
+  notImpl('fn_index_of', [itemArray,searchitem]);
+}
+/**
+* original function is fn:remove((item,item,...),position)
+* 
+**/
+def fn_remove(itemArray,position){
+  //TODO the last param is ...
+  notImpl('fn_remove', [itemArray,position]);
+}
+/**
+* original function is fn:empty(item,item,...)
+* 
+**/
+def fn_empty(item,item11){
+  //TODO the last param is ...
+  notImpl('fn_empty', [item,item11]);
+}
+/**
+* original function is fn:exists(item,item,...)
+* 
+**/
+def fn_exists(item,item11){
+  //TODO the last param is ...
+  notImpl('fn_exists', [item,item11]);
+}
+/**
+* original function is fn:distinct-values((item,item,...),collation)
+* 
+**/
+def fn_distinct_values(itemArray,collation){
+  //TODO the last param is ...
+  notImpl('fn_distinct_values', [itemArray,collation]);
+}
+/**
+* original function is fn:insert-before((item,item,...),pos,inserts)
+* 
+**/
+def fn_insert_before(itemArray,pos,inserts){
+  //TODO the last param is ...
+  notImpl('fn_insert_before', [itemArray,pos,inserts]);
+}
+/**
+* original function is fn:reverse((item,item,...))
+* 
+**/
+def fn_reverse(itemArray){
+  //TODO the last param is ...
+  notImpl('fn_reverse', [itemArray]);
+}
+/**
+* original function is fn:subsequence((item,item,...),start,len)
+* 
+**/
+def fn_subsequence(itemArray,start,len){
+  //TODO the last param is ...
+  notImpl('fn_subsequence', [itemArray,start,len]);
+}
+/**
+* original function is fn:unordered((item,item,...))
+* 
+**/
+def fn_unordered(itemArray){
+  //TODO the last param is ...
+  notImpl('fn_unordered', [itemArray]);
+}
+//################################################### Functions related to sequences function begin
+/****************************** I am a split ********************************/
+//################################################### Context function function begin
+/**
+* original function is fn:position()
+* 
+**/
+def fn_position(){
+  //TODO 
+  notImpl('fn_position', []);
+}
+/**
+* original function is fn:last()
+* 
+**/
+def fn_last(){
+  //TODO 
+  notImpl('fn_last', []);
+}
+/**
+* original function is fn:current-dateTime()
+* 
+**/
+def fn_current_dateTime(){
+  //TODO 
+  notImpl('fn_current_dateTime', []);
+}
+/**
+* original function is fn:current-date()
+* 
+**/
+def fn_current_date(){
+  //TODO 
+  notImpl('fn_current_date', []);
+}
+/**
+* original function is fn:current-time()
+* 
+**/
+def fn_current_time(){
+  //TODO 
+  notImpl('fn_current_time', []);
+}
+/**
+* original function is fn:implicit-timezone()
+* 
+**/
+def fn_implicit_timezone(){
+  //TODO 
+  notImpl('fn_implicit_timezone', []);
+}
+/**
+* original function is fn:default-collation()
+* 
+**/
+def fn_default_collation(){
+  //TODO 
+  notImpl('fn_default_collation', []);
+}
+/**
+* original function is fn:static-base-uri()
+* 
+**/
+def fn_static_base_uri(){
+  //TODO 
+  notImpl('fn_static_base_uri', []);
+}
+//################################################### Context function function begin
+/****************************** I am a split ********************************/
+
+
+
+//common function declare
+//################################################### common function begin
+def notImpl(functionName, params){
+  return new java.lang.RuntimeException(functionName + " with " + params + " not iml yet");
+}
+
+def isEmpty (str){
+  return str == nil || str.length == 0;
+}
+
+def isBlank (str){
+  return str == nil || str.trim().length == 0;
+}
+
+//################################################### common function end
+
+
+//test function
+/**
+test function def begin
+**/
+isBlank('   ');
+
+//fn_static_base_uri();
+return fn_substring('1234567890 ', 1, 10);
+
+/**
+test function def end
+**/

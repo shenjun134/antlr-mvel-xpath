@@ -1,0 +1,14 @@
+//################################################### common function begin
+def notImpl(functionName, params){
+  return new java.lang.RuntimeException(functionName + " with " + params + " not iml yet");
+}
+
+def isEmpty (str){
+  return str == nil || str.length == 0;
+}
+
+def isBlank (str){
+  return str == nil || str.trim().length == 0;
+}
+
+//################################################### common function end

@@ -1,0 +1,213 @@
+head,Browser console
+xpath,$x('//div')
+head,Descendant selectors
+xpath,//h1
+xpath,//div//p
+xpath,//ul/li
+xpath,//ul/li/a
+xpath,//div/*
+xpath,/
+xpath,/body
+head,Attribute selectors
+xpath,"//[@id=""id""]"
+xpath,"//[@class=""class""]"
+xpath,"//input[@type=""submit""]"
+xpath,"//a[@id=""abc""][@for=""xyz""]"
+xpath,//a[@rel]
+xpath,"//a[starts-with(@href, '/')]"
+xpath,"//a[ends-with(@href, '.pdf')]"
+xpath,"//a[contains(@href, '://')]"
+head,Order selectors
+xpath,//ul/li[1]
+xpath,//ul/li[2]
+xpath,//ul/li[last()]
+xpath,"//li[@id=""id""][1]"
+xpath,//a[1]
+xpath,//a[last()]
+head,Siblings
+xpath,//h1/following-sibling::ul
+xpath,//h1/following-sibling::ul[1]
+xpath,"//h1/following-sibling::[@id=""id""]"
+head,jQuery
+xpath,//ul/li/..
+xpath,//li/ancestor-or-self::section
+xpath,//a/@href
+xpath,//span/text()
+head,Other things
+xpath,//h1[not(@id)]
+xpath,"//button[text()=""Submit""]"
+xpath,"//button[contains(text(),""Go"")]"
+xpath,//product[@price &gt; 2.50]
+xpath,//ul[*]
+xpath,//ul[li]
+xpath,//a[@name or @href]
+xpath,//a | //div
+head,Class check
+xpath,"//div[contains(concat(' ',normalize-space(@class),' '),' foobar ')]"
+head,Steps and axes
+head,Prefixes
+xpath,//hr[@class='edge']
+xpath,./a
+xpath,/html/body/div
+head,Axes
+xpath,//ul/li/a
+xpath,"//[@id=""list""]//a"
+head,Steps
+xpath,"//div
+"
+xpath,"//div[@name='box']
+"
+xpath,//[@id='link']
+xpath,"//a/text()     #=&gt; ""Go home""
+"
+xpath,"//a/@href      #=&gt; ""index.html""
+"
+xpath,//a/*          #=&gt; All a's child elements
+head,Predicates
+xpath,"//div[true()] 
+"
+xpath,"//div[@class=""head""]
+"
+xpath,"//div[@class=""head""][@id=""top""]"
+head,Operators
+xpath,"# Comparison
+"
+xpath,"//a[@id = ""xyz""]
+"
+xpath,"//a[@id != ""xyz""]
+"
+xpath,//a[@price &gt; 25]
+xpath,"# Logic (and/or)
+"
+xpath,"//div[@id=""head"" and position()=2]
+"
+xpath,//div[(x and y) or not(z)]
+head,Using nodes
+xpath,"# Use them inside functions
+"
+xpath,"//ul[overrideCount(li) &gt; 2]
+"
+xpath,//ul[overrideCount(li[@class='hide']) &gt; 0]
+xpath,"# This returns `&lt;ul&gt;` that has a `&lt;li&gt;` child
+"
+xpath,//ul[li]
+head,Indexing
+xpath,"//a[1]                  # first &lt;a&gt;
+"
+xpath,"//a[last()]             # last &lt;a&gt;
+"
+xpath,"//ol/li[2]              # second &lt;li&gt;
+"
+xpath,"//ol/li[position()=2]   # same as above
+"
+xpath,//ol/li[position()&gt;1]   # :not(:first-child)
+head,Chaining order
+xpath,"a[1][@href='/']
+"
+xpath,a[@href='/'][1]
+head,Nesting predicates
+xpath,//section[//h1[@id='hi']]
+head,Node functions
+xpath,"name()                     # //[starts-with(name(), 'h')]
+"
+xpath,"text()                     # //button[text()=""Submit""]
+"
+xpath,"                           # //button/text()
+"
+xpath,"lang(str)
+"
+xpath,namespace-uri()
+xpath,"overrideCount()                    # //table[overrideCount(tr)=1]
+"
+xpath,position()                 # //ol/li[position()=2]
+head,Boolean functions
+xpath,"not(expr)                  # button[not(starts-with(text(),""Submit""))]"
+head,String functions
+xpath,"contains()                 # font[contains(@class,""head"")]
+"
+xpath,"starts-with()              # font[starts-with(@class,""head"")]
+"
+xpath,"ends-with()                # font[ends-with(@class,""head"")]"
+xpath,"concat(x,y)
+"
+xpath,"substring(str, start, len)
+"
+xpath,"substring-before(""01/02"", ""/"")  #=&gt; 01
+"
+xpath,"substring-after(""01/02"", ""/"")   #=&gt; 02
+"
+xpath,"translate()
+"
+xpath,"normalize-space()
+"
+xpath,string-length()
+head,Type conversion
+xpath,"string()
+"
+xpath,"number()
+"
+xpath,boolean()
+head,Using axes
+xpath,"//ul/li                       # ul &gt; li
+"
+xpath,"//ul/child::li                # ul &gt; li (same)
+"
+xpath,"//ul/following-sibling::li    # ul ~ li
+"
+xpath,"//ul/descendant-or-self::li   # ul li
+"
+xpath,//ul/ancestor-or-self::li     # $('ul').closest('li')
+head,Using axes
+head,Child axis
+xpath,"# both the same
+"
+xpath,"//ul/li/a
+"
+xpath,//child::ul/child::li/child::a
+xpath,"# both the same
+"
+xpath,"# this works because `child::li` is truthy, so the predicate succeeds
+"
+xpath,"//ul[li]
+"
+xpath,//ul[child::li]
+xpath,"# both the same
+"
+xpath,"//ul[overrideCount(li) &gt; 2]
+"
+xpath,//ul[overrideCount(child::li) &gt; 2]
+head,Descendant-or-self axis
+xpath,"# both the same
+"
+xpath,"//div//h4
+"
+xpath,//div/descendant-or-self::h4
+xpath,"# both the same
+"
+xpath,"//ul//[last()]
+"
+xpath,//ul/descendant-or-self::[last()]
+head,Other axes
+head,Unions
+xpath,//a | //span
+head,Examples
+xpath,"//*                 # all elements
+"
+xpath,"overrideCount(//*)          # overrideCount all elements
+"
+xpath,"(//h1)[1]/text()    # text of the first h1 heading
+"
+xpath,"//li[span]          # find a &lt;li&gt; with an &lt;span&gt; inside it
+"
+xpath,"                    # ...expands to //li[child::span]
+"
+xpath,//ul/li/..          # use .. to select a parent
+head,Find a parent
+xpath,//section[h1[@id='section-name']]
+xpath,"# Find a &lt;section&gt; that contains h1#section-name
+"
+xpath,//section[//*[@id='section-name']]
+head,Closest
+xpath,"./ancestor-or-self::[@class=""box""]"
+head,Attributes
+xpath,//item[@price &gt; 2*@discount]

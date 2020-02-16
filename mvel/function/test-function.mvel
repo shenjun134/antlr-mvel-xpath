@@ -1,0 +1,11 @@
+/**
+test function def begin
+**/
+isBlank('   ');
+
+//fn_static_base_uri();
+return fn_substring('1234567890 ', 1, 10);
+
+/**
+test function def end
+**/
