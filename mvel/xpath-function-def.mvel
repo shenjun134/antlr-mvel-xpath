@@ -825,8 +825,9 @@ test function def begin
 isBlank('   ');
 
 //fn_static_base_uri();
-return fn_substring('1234567890 ', 1, 10);
+ fn_substring('1234567890 ', 1, 10);
 
 /**
 test function def end
 **/
+assertUtil.equals('123456789', fn_substring('1234567890 ', 1, 9)).setCaseName('fn_substring');

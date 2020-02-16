@@ -82,6 +82,7 @@ public class XPathFunctionGetter {
   }
 
   public static Map<String, String> funcMap = new HashMap<>();
+  public static Map<String, String> testMap = new HashMap<>();
   public static String xpathOutTemplate;
 
   static {
@@ -95,6 +96,13 @@ public class XPathFunctionGetter {
           name = StringUtils.substringBefore(name, ".mvel");
           try {
             funcMap.put(name, FileUtils.readFileToString(file, "utf-8"));
+          } catch (IOException e) {
+            e.printStackTrace();
+          }
+        }else if (StringUtils.endsWith(name, ".test")) {
+          name = StringUtils.substringBefore(name, ".test");
+          try {
+            testMap.put(name, FileUtils.readFileToString(file, "utf-8"));
           } catch (IOException e) {
             e.printStackTrace();
           }
@@ -128,13 +136,18 @@ public class XPathFunctionGetter {
         }
       }
     }
+    StringBuilder testBuilder = new StringBuilder();
+    testBuilder.append(funcMap.get(Constant.testFunction));
+    for(String test : testMap.values()){
+      testBuilder.append("\n").append(test);
+    }
     System.out.println(total);
     String out =
         String.format(
             xpathOutTemplate,
             builder.toString(),
             funcMap.get(Constant.commonFunction),
-            funcMap.get(Constant.testFunction));
+                testBuilder);
     FileUtils.writeStringToFile(new File(mvel2XpathTemplate), out);
     FileUtils.writeStringToFile(new File(xpathFuncList), funcBuilder.toString());
   }
