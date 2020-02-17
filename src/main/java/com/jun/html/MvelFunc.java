@@ -11,8 +11,10 @@ public class MvelFunc {
   private List<String> params;
   private int overrideCount;
   private boolean dynamicParams;
+  private String category;
+  private String key;
 
-  public void buildOut() {
+  public String buildOut() {
     String dynamicParamsStr = "";
     if (dynamicParams) {
       dynamicParamsStr = "the last param is ...";
@@ -20,8 +22,8 @@ public class MvelFunc {
     String params = StringUtils.join(this.getParams(), ",");
     String head = "def " + this.getFuncName() + "(" + params + ")";
     String overrideStr =
-        overrideCount > 1 ? String.format("has been override %d", overrideCount) : "";
-    String before = String.format(XPathFunctionGetter.Template.functionBefore, src, overrideStr);
+        overrideCount > 1 ? String.format("Override count:%d ", overrideCount) : " ";
+    String before = String.format(XPathFunctionGetter.Template.functionBefore, src, overrideStr + "\n* Function key:" + key);
     String body =
         String.format(
             XPathFunctionGetter.Template.functionBody,
@@ -29,6 +31,15 @@ public class MvelFunc {
             this.getFuncName(),
             params);
     out = before + head + body + "\n";
+    return out;
+  }
+
+  public void buildKey(){
+    this.key = funcName + ":" + params.size();
+  }
+
+  public String buildKey(String funcName, int paramsLength){
+    return funcName + ":" + paramsLength;
   }
 
   public String buildShortOut() {
@@ -87,5 +98,21 @@ public class MvelFunc {
 
   public void setDynamicParams(boolean dynamicParams) {
     this.dynamicParams = dynamicParams;
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public void setCategory(String category) {
+    this.category = category;
+  }
+
+  public String getKey() {
+    return key;
+  }
+
+  public void setKey(String key) {
+    this.key = key;
   }
 }

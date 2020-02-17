@@ -1,5 +1,7 @@
 package com.jun.html;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
@@ -7,12 +9,16 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
 public class XPathFunctionGetter {
+
+  private static final Logger logger = LoggerFactory.getLogger(XPathFunctionGetter.class);
 
   interface Template {
     String functionBegin =
@@ -99,7 +105,7 @@ public class XPathFunctionGetter {
           } catch (IOException e) {
             e.printStackTrace();
           }
-        }else if (StringUtils.endsWith(name, ".test")) {
+        } else if (StringUtils.endsWith(name, ".test")) {
           name = StringUtils.substringBefore(name, ".test");
           try {
             testMap.put(name, FileUtils.readFileToString(file, "utf-8"));
@@ -126,11 +132,12 @@ public class XPathFunctionGetter {
     Document doc = Jsoup.parse(docStr);
     Element main = doc.selectFirst("#maincontent");
     List<Node> childNodes = main.childNodes();
+    Map<String, List<MvelFunc>> mvelFuncMap = new HashMap<>();
     int total = 0;
     for (Node node : childNodes) {
       if (node instanceof Element) {
         Element part = (Element) node;
-        boolean re = parse(part, builder, funcBuilder);
+        boolean re = parse(part, builder, funcBuilder, mvelFuncMap);
         if (re) {
           total++;
         }
@@ -138,21 +145,56 @@ public class XPathFunctionGetter {
     }
     StringBuilder testBuilder = new StringBuilder();
     testBuilder.append(funcMap.get(Constant.testFunction));
-    for(String test : testMap.values()){
+    for (String test : testMap.values()) {
       testBuilder.append("\n").append(test);
     }
-    System.out.println(total);
+    logger.debug("total:{}", total);
     String out =
         String.format(
             xpathOutTemplate,
             builder.toString(),
             funcMap.get(Constant.commonFunction),
-                testBuilder);
+            testBuilder);
     FileUtils.writeStringToFile(new File(mvel2XpathTemplate), out);
     FileUtils.writeStringToFile(new File(xpathFuncList), funcBuilder.toString());
+    List<MvelFunc> finalFunc = new ArrayList<>();
+    for(List<MvelFunc> list : mvelFuncMap.values()){
+      String location = "mvel/template/" + list.get(0).getFuncName() + ".mvel";
+      StringBuilder tempBuilder = new StringBuilder();
+      int i = 0;
+      Collections.sort(list, new Comparator<MvelFunc>() {
+        @Override
+        public int compare(MvelFunc o1, MvelFunc o2) {
+          return o1.getKey().compareTo(o2.getKey());
+        }
+      });
+      for(MvelFunc func : list){
+        i++;
+        if(list.size() > 1){
+          func.setFuncName( func.getFuncName() + i);
+        }
+        tempBuilder.append(func.buildOut());
+        MvelFunc newFunc = new MvelFunc();
+        newFunc.setFuncName(func.getFuncName());
+        newFunc.setParams(func.getParams());
+        newFunc.setSrc(func.getSrc());
+        newFunc.setCategory(func.getCategory());
+        newFunc.setOverrideCount(list.size());
+        newFunc.setKey(func.getKey());
+        finalFunc.add(newFunc);
+      }
+      FileUtils.writeStringToFile(new File(location), tempBuilder.toString());
+    }
+    String configPath = "mvel/xpath-mvel-config.json";
+    Gson gson = new GsonBuilder().create();
+    FileUtils.writeStringToFile(new File(configPath), gson.toJson(finalFunc));
   }
 
-  public static boolean parse(Element part, StringBuilder builder, StringBuilder funcBuilder) {
+  public static boolean parse(
+      Element part,
+      StringBuilder builder,
+      StringBuilder funcBuilder,
+      Map<String, List<MvelFunc>> mvelFuncMap) {
     Element headE = part.selectFirst("h2 a");
     Element table = part.selectFirst("table.dataintable");
     if (headE == null || table == null) {
@@ -181,6 +223,14 @@ public class XPathFunctionGetter {
         }
         for (String func : list) {
           MvelFunc mvelFunc = paramFunc(func);
+          mvelFunc.buildKey();
+          List<MvelFunc> tempList = mvelFuncMap.get(mvelFunc.getFuncName());
+          if(tempList == null){
+            tempList = new ArrayList<>();
+            mvelFuncMap.put(mvelFunc.getFuncName(), tempList);
+          }
+          tempList.add(mvelFunc);
+          mvelFunc.setCategory(head);
           funcBuilder
               .append(mvelFunc.buildShortOut())
               .append("\t\t")
@@ -190,7 +240,7 @@ public class XPathFunctionGetter {
           if (temp == null) {
             mvelFuncLinkedHashMap.put(mvelFunc.getFuncName(), mvelFunc);
           } else {
-            System.out.println("duplicate:" + temp.getFuncName());
+            logger.debug("duplicate:" + temp.getFuncName());
             temp.overrideCountPlus();
             if (temp.getParams().size() < mvelFunc.getParams().size()) {
               mvelFunc.setOverrideCount(temp.getOverrideCount());
@@ -238,20 +288,20 @@ public class XPathFunctionGetter {
     List<String> list = new ArrayList<>();
     int startIndex = 0;
     if (funcDecl.indexOf("(") != funcDecl.lastIndexOf("(")) {
-      System.out.println(funcName);
-      System.out.println(param);
+      logger.debug(funcName);
+      logger.debug(param);
       param = StringUtils.substring(funcDecl, funcDecl.lastIndexOf("("), funcDecl.lastIndexOf(")"));
-      System.out.println(param);
+      logger.debug(param);
       param = StringUtils.substring(funcDecl, funcDecl.indexOf(")") + 1, funcDecl.lastIndexOf(")"));
-      System.out.println(param);
+      logger.debug(param);
       startIndex = 1;
-      System.out.println(funcDecl);
+      logger.debug(funcDecl);
       String innerParam =
           StringUtils.substring(funcDecl, funcDecl.lastIndexOf("(") + 1, funcDecl.indexOf(")"));
       String[] innerArray = innerParam.split(",");
       String multiple = innerArray[0] + "Array";
       list.add(multiple);
-      System.out.println(multiple);
+      logger.debug(multiple);
     }
 
     if (param.trim().length() > 0) {

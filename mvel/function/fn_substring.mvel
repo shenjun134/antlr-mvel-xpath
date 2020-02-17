@@ -1,8 +1,18 @@
 /**
-* original function is fn:substring(string,start,len)
-* has been override 2
+* original function is fn:substring(string,start)
+*
+* Function key:fn_substring:2
 **/
-def fn_substring(str,start,len){
+def fn_substring1(str,start){
+  //TODO
+  notImpl('fn_substring1', [str,start]);
+}
+/**
+* original function is fn:substring(string,start,len)
+* Override count:2
+* Function key:fn_substring:3
+**/
+def fn_substring2(str,start,len){
  if(str == null){
    return null;
  }
